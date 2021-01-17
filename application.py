@@ -25,10 +25,16 @@ from PIL import Image, ImageDraw, ImageFont
 import time
 
 app = Flask(__name__)
-LINE_SECRET = "d2abd6336bb6578a321bcb9e9070cd4f"]
+LINE_SECRET = "d2abd6336bb6578a321bcb9e9070cd4f"
 LINE_TOKEN = "kE9Z0tufekB1YcCXp2y/UbwhO7O5Nw+bKrEpuxHVWXuS03iHFlccd0YFQnMtLMsOBibZCj0nozVc9P1W6BZRNT0r22ZkgocgLfrotK3T9CadyKPeVApvWh/yzm6NWBYQf4u22rG4KhU1Ph8VDQt2uQdB04t89/1O/w1cDnyilFU="
 LINE_BOT = LineBotApi(LINE_TOKEN)
 HANDLER = WebhookHandler(LINE_SECRET)
+
+
+@app.route("/")
+def hello():
+    "hello world"
+    return "Hello World!!!!!"
 
 @app.route("/callback", methods=["POST"])
 def callback():
@@ -44,8 +50,3 @@ def callback():
         abort(400)
     return "OK"
 
-
-@app.route("/")
-def hello():
-    "hello world"
-    return "Hello World!!!!!"
