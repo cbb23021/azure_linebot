@@ -40,8 +40,8 @@ IMGUR_CONFIG = {
 
 IMGUR_CLIENT = Imgur(config=IMGUR_CONFIG)
 
-KEY = CONFIG["azure"]["subscription_key"]
-ENDPOINT = CONFIG["azure"]["endpoint"]
+KEY = CONFIG["azure"]["face_key"]
+ENDPOINT = CONFIG["azure"]["face_end"]
 FACE_CLIENT = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 @app.route("/")
