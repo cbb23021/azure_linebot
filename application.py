@@ -31,6 +31,15 @@ LINE_SECRET = CONFIG["line"]["line_secret"]
 LINE_TOKEN = CONFIG["line"]["line_token"]
 LINE_BOT = LineBotApi(LINE_TOKEN)
 HANDLER = WebhookHandler(LINE_SECRET)
+IMGUR_CONFIG = {
+	  "client_id": CONFIG["imgur"]["client_id"],
+	  "client_secret": CONFIG["imgur"]["client_secret"],
+	  "access_token": CONFIG["imgur"]["access_token"],
+	  "refresh_token": CONFIG["imgur"]["refresh_token"]
+	}
+	
+IMGUR_CLIENT = Imgur(config=IMGUR_CONFIG)
+
 
 @app.route("/")
 def hello():
@@ -101,6 +110,7 @@ def azure_object_detection(url, filename):
                 font=fnt,
             )
     img.save(filename)
+
     image = IMGUR_CLIENT.image_upload(filename, "", "")
     link = image["response"]["data"]["link"]
     os.remove(filename)
