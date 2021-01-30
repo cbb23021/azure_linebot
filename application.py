@@ -40,13 +40,13 @@ IMGUR_CONFIG = {
 
 IMGUR_CLIENT = Imgur(config=IMGUR_CONFIG)
 
-KEY = CONFIG["azure"]["subscription_key"]
-ENDPOINT = CONFIG["azure"]["endpoint"]
+KEY = CONFIG["azure"]["face_key"]
+ENDPOINT = CONFIG["azure"]["face_key"]
 FACE_CLIENT = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 
-SUBSCRIPTION_KEY = CONFIG["azure"]["face_key"]
-ENDPOINT = CONFIG["azure"]["face_key"]
+SUBSCRIPTION_KEY = CONFIG["azure"]["subscription_key"]
+ENDPOINT = CONFIG["azure"]["endpoint"]
 CV_CLIENT = ComputerVisionClient(
     ENDPOINT, CognitiveServicesCredentials(SUBSCRIPTION_KEY)
 )
