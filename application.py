@@ -24,12 +24,13 @@ from imgur_python import Imgur
 from PIL import Image, ImageDraw, ImageFont
 import time
 
+CONFIG = json.load(open("/home/config.json","r"))
+
 app = Flask(__name__)
-LINE_SECRET = config["line"]["line_secret"]
-LINE_TOKEN = config["line"]["line_token"]
+LINE_SECRET = CONFIG["line"]["line_secret"]
+LINE_TOKEN = CONFIG["line"]["line_token"]
 LINE_BOT = LineBotApi(LINE_TOKEN)
 HANDLER = WebhookHandler(LINE_SECRET)
-
 
 @app.route("/")
 def hello():
