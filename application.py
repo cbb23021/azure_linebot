@@ -37,9 +37,12 @@ IMGUR_CONFIG = {
 	  "access_token": CONFIG["imgur"]["access_token"],
 	  "refresh_token": CONFIG["imgur"]["refresh_token"]
 	}
-	
+
 IMGUR_CLIENT = Imgur(config=IMGUR_CONFIG)
 
+KEY = CONFIG["azure"]["subscription_key"]
+ENDPOINT = CONFIG["azure"]["endpoint"]
+FACE_CLIENT = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 @app.route("/")
 def hello():
