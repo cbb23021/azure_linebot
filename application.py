@@ -40,9 +40,16 @@ IMGUR_CONFIG = {
 
 IMGUR_CLIENT = Imgur(config=IMGUR_CONFIG)
 
-KEY = CONFIG["azure"]["face_key"]
-ENDPOINT = CONFIG["azure"]["face_end"]
+KEY = CONFIG["azure"]["subscription_key"]
+ENDPOINT = CONFIG["azure"]["endpoint"]
 FACE_CLIENT = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
+
+
+SUBSCRIPTION_KEY = CONFIG["azure"]["face_key"]
+ENDPOINT = CONFIG["azure"]["face_key"]
+CV_CLIENT = ComputerVisionClient(
+    ENDPOINT, CognitiveServicesCredentials(SUBSCRIPTION_KEY)
+)
 
 @app.route("/")
 def hello():
